@@ -10,13 +10,15 @@ jobs:
     steps:
         - name: Perform Checkout
           uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
         
         - name: Add Remote
           env: 
             HF: ${{ secrets.HF }}
-          run: git remote add space https://huggingface.co/spaces/gruhit-patel/deployment_app
+          run: git remote add space https://gruhit-patel:$HF@huggingface.co/spaces/gruhit-patel/deployment_app
         
         - name: Push to Space
           env: 
             HF: ${{ secrets.HF }}
-          run: git push https://gruhit-patel:$HF@huggingface.co/spaces/gruhit-patel/deployment_app main
+          run: git push --force https://gruhit-patel:$HF@huggingface.co/spaces/gruhit-patel/deployment_app main
