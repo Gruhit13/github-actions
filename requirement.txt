@@ -3,3 +3,4 @@ uvicorn[standard]
 pytest
 httpx
 numpy
+xgboost=2.0.3
