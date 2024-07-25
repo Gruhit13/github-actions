@@ -1,0 +1,22 @@
+name: LaunchHFBackend
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Perform Checkout
+          uses: actions/checkout@v2
+        
+        - name: Add Remote
+          env: 
+            HF: ${{ secrets.HF }}
+          run: git remote add space https://huggingface.co/spaces/gruhit-patel/deployment_app
+        
+        - name: Push to Space
+          env: 
+            HF: ${{ secrets.HF }}
+          run: git push https://gruhit-patel:$HF@huggingface.co/spaces/gruhit-patel/deployment_app main
