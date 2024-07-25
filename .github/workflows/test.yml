@@ -13,13 +13,10 @@ jobs:
     steps:
     - uses: action/checkout@v2
 
-    - name: Install python to perform testing
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9'
     
-    - name: Install Dependencies
     - run: python install -r requirement.txt
 
-    - name: Run Pytest
     - run: pytest
