@@ -34,5 +34,5 @@ def predice_house_price(req: PredictReq):
 	prediction = ml_model.predict(inp)[0]
 
 	return {
-		'price': str(prediction)
+		'price': str(prediction*100)
 	}
